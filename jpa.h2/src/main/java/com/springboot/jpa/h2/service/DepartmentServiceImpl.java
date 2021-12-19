@@ -25,4 +25,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository.findAll();
 	}
 
+	@Override
+	public Department findDepartmentById(Long departmentId) {
+		// TODO Auto-generated method stub
+		return departmentRepository.findById(departmentId).get();
+	}
+
 }
