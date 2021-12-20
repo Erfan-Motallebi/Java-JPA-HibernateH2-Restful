@@ -57,4 +57,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	}
 
+	@Override
+	public void deleteDepartmentIdBy(Long departmentId) {
+		// TODO Auto-generated method stub
+		departmentRepository.deleteById(departmentId);
+	}
+
 }
