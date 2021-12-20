@@ -3,6 +3,7 @@ package com.springboot.jpa.h2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,5 +39,12 @@ public class DepartmentController {
 	@PutMapping(path = "/departments/{id}")
 	public Department updateSpecificDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) {
 		return departmentService.updateDepartmentById(departmentId, department);
+	}
+	
+	@DeleteMapping(path = "/departments/{id}")
+	public String deleteSpecificDepartment(@PathVariable("id") Long departmentId) {
+		departmentService.deleteDepartmentIdBy(departmentId);
+		return "Successfully delete the department by ID: " + department;
+		
 	}
 }

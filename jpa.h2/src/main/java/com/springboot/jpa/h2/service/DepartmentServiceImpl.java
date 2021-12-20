@@ -51,4 +51,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository.save(depDB);
 	}
 
+	@Override
+	public void deleteDepartmentIdBy(Long departmentId) {
+		// TODO Auto-generated method stub
+		departmentRepository.deleteById(departmentId);
+	}
+
 }
