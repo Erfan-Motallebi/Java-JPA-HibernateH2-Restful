@@ -63,4 +63,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 		departmentRepository.deleteById(departmentId);
 	}
 
+	@Override
+	public Department findDepartmentByName(String departmentName) {
+		// TODO Auto-generated method stub
+		return departmentRepository.findByDepartmentName(departmentName);
+	}
+
 }
