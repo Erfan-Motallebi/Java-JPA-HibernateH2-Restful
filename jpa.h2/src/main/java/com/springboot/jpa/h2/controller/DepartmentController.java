@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.jpa.h2.entity.Department;
+import com.springboot.jpa.h2.error.DepartmentNotFoundException;
 import com.springboot.jpa.h2.service.DepartmentService;
 
 @RestController
@@ -37,7 +38,7 @@ public class DepartmentController {
 	}
 	
 	@PostMapping(path = "/departments/{id}")
-	public Department getSpecificDepartment(@PathVariable("id") Long departmentId) {
+	public Department getSpecificDepartment(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
 		return departmentService.findDepartmentById(departmentId);
 	}
 	

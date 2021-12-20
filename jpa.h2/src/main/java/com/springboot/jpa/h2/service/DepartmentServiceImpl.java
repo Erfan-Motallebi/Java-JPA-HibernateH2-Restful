@@ -2,11 +2,13 @@ package com.springboot.jpa.h2.service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.jpa.h2.entity.Department;
+import com.springboot.jpa.h2.error.DepartmentNotFoundException;
 import com.springboot.jpa.h2.repository.DepartmentRepository;
 
 @Service
@@ -21,14 +23,18 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public List<Department> extractAllDepartment() {
-		// TODO Auto-generated method stub
 		return departmentRepository.findAll();
 	}
 
 	@Override
-	public Department findDepartmentById(Long departmentId) {
-		// TODO Auto-generated method stub
-		return departmentRepository.findById(departmentId).get();
+	public Department findDepartmentById(Long departmentId) throws DepartmentNotFoundException {
+		
+		Optional<Department> department = departmentRepository.findById(departmentId);
+		
+		if(!department.isPresent()) {
+			throw new DepartmentNotFoundException("Department Not Found");
+		}
+		return department.get();
 	}
 
 	@Override
@@ -53,13 +59,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public void deleteDepartmentIdBy(Long departmentId) {
-		// TODO Auto-generated method stub
 		departmentRepository.deleteById(departmentId);
 	}
 
 	@Override
 	public Department findDepartmentByName(String departmentName) {
-		// TODO Auto-generated method stub
 		return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
 	}
 
