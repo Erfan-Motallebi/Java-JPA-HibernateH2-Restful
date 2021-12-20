@@ -63,4 +63,5 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository.findByDepartmentName(departmentName);
 	}
 
+
 }
