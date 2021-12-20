@@ -10,4 +10,6 @@ public interface DepartmentService {
 	List<Department> extractAllDepartment();
 	
 	Department findDepartmentById(Long departmentId);
+
+	Department updateDepartmentById(Long departmentId, Department department);
 }
