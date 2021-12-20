@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Department {
@@ -21,6 +22,7 @@ public class Department {
 	@Column(name = "department_section")
 	private String departmentSection;
 
+	@Size(min = 1, max = 100)
 	@Column(name = "department_numbers")
 	private Long departmentNumbers;
 
