@@ -25,6 +25,7 @@ public class Department {
 	private Long departmentNumbers;
 
 	@Column(name = "department_Code")
+	@NotNull(message = "Enter the department")
 	private String departmentCode;
 	
 	Department() {
