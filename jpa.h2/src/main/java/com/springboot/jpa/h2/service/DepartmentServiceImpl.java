@@ -66,7 +66,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	public Department findDepartmentByName(String departmentName) {
 		// TODO Auto-generated method stub
-		return departmentRepository.findByDepartmentName(departmentName);
+		return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
 	}
+
 
 }

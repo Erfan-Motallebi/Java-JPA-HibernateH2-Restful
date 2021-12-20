@@ -2,7 +2,10 @@ package com.springboot.jpa.h2.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +24,8 @@ public class DepartmentController {
 	private DepartmentService departmentService;
 	
 	@PostMapping(path = "/departments")
-	public Department postDepartment(@RequestBody Department department) {
-		return departmentService.saveDepartment(department);
+	public Department postDepartment(@Valid @RequestBody Department department) {
+			return departmentService.saveDepartment(department);
 	}
 	
 	@GetMapping(path = "/departments")
@@ -56,4 +59,5 @@ public class DepartmentController {
 	public Department findDepartmentBySpecificName(@PathVariable("name") String departmentName) {
 		return departmentService.findDepartmentByName(departmentName);
 	}
+	
 }
