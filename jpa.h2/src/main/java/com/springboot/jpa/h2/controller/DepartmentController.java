@@ -33,7 +33,7 @@ public class DepartmentController {
 	public ResponseEntity<Department> postDepartment(@Valid @RequestBody Department department) {
 			LOGGER.info("Saved the department successfully");
 			Department newDepartment =  departmentService.saveDepartment(department);
-			return ResponseEntity.status(HttpStatus.CREATED).body(department);
+			return ResponseEntity.status(HttpStatus.CREATED).body(newDepartment);
 	}
 	
 	@GetMapping(path = "/departments")
@@ -49,6 +49,12 @@ public class DepartmentController {
 
 	
 	@PutMapping(path = "/departments/{id}")
+	public Department updateSpecificDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) throws DepartmentNotFoundException{
+		try {
+			return departmentService.updateDepartmentById(departmentId, department);
+		} catch (Exception e) {
+			throw new DepartmentNotFoundException("Failed to update the specific DepartmentID");
+		}
 	public Department updateSpecificDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) {
 		return departmentService.updateDepartmentById(departmentId, department);
 	@DeleteMapping(path = "/departments/{id}")
