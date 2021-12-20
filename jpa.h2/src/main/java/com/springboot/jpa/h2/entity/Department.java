@@ -6,8 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.lang.NonNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Department {
@@ -23,10 +22,12 @@ public class Department {
 	@Column(name = "department_section")
 	private String departmentSection;
 
+	@Size(min = 1, max = 100)
 	@Column(name = "department_numbers")
 	private Long departmentNumbers;
 
 	@Column(name = "department_Code")
+	@NotNull(message = "Enter the department")
 	private String departmentCode;
 	
 	Department() {
