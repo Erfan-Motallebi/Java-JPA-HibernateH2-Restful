@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +23,11 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
 	
+	private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(DepartmentController.class);
+	
 	@PostMapping(path = "/departments")
 	public Department postDepartment(@Valid @RequestBody Department department) {
+			LOGGER.info("Saved the department successfully");
 			return departmentService.saveDepartment(department);
 	}
 	
