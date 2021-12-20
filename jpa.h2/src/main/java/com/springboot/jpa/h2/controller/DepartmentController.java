@@ -6,6 +6,8 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.jpa.h2.entity.Department;
+import com.springboot.jpa.h2.entity.EntitySuccessClass;
 import com.springboot.jpa.h2.error.DepartmentNotFoundException;
 import com.springboot.jpa.h2.service.DepartmentService;
 
@@ -27,9 +30,10 @@ public class DepartmentController {
 	private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(DepartmentController.class);
 	
 	@PostMapping(path = "/departments")
-	public Department postDepartment(@Valid @RequestBody Department department) {
+	public ResponseEntity<Department> postDepartment(@Valid @RequestBody Department department) {
 			LOGGER.info("Saved the department successfully");
-			return departmentService.saveDepartment(department);
+			Department newDepartment =  departmentService.saveDepartment(department);
+			return ResponseEntity.status(HttpStatus.CREATED).body(department);
 	}
 	
 	@GetMapping(path = "/departments")
@@ -54,9 +58,10 @@ public class DepartmentController {
 	}
 	
 	@DeleteMapping(path = "/departments/{id}")
-	public String deleteSpecificDepartment(@PathVariable("id") Long departmentId) {
+	public ResponseEntity<EntitySuccessClass> deleteSpecificDepartment(@PathVariable("id") Long departmentId) throws DepartmentNotFoundException {
 		departmentService.deleteDepartmentIdBy(departmentId);
-		return "Successfully delete the department by ID: " + departmentId;
+		EntitySuccessClass successMessage = new EntitySuccessClass(HttpStatus.OK, "Successfully deleted");
+		return ResponseEntity.status(HttpStatus.OK).body(successMessage); 
 	}
 	
 	@GetMapping(path = "/departments/name/{name}")
