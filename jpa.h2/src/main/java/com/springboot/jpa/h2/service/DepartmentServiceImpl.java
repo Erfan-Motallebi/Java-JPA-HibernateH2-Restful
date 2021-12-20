@@ -32,6 +32,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 
 	@Override
+
 	public Department updateDepartmentById(Long departmentId, Department department) {
 		Department depDB = departmentRepository.findById(departmentId).get();
 
@@ -49,6 +50,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 		}
 		
 		return departmentRepository.save(depDB);
+
+	public void deleteDepartmentById(Long departmentId) {
+		// TODO Auto-generated method stub
+		departmentRepository.deleteById(departmentId);
+
 	}
 
 	@Override
