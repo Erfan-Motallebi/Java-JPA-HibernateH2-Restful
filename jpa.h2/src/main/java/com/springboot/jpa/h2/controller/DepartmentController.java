@@ -48,8 +48,12 @@ public class DepartmentController {
 	
 	
 	@PutMapping(path = "/departments/{id}")
-	public Department updateSpecificDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) {
-		return departmentService.updateDepartmentById(departmentId, department);
+	public Department updateSpecificDepartment(@PathVariable("id") Long departmentId, @RequestBody Department department) throws DepartmentNotFoundException{
+		try {
+			return departmentService.updateDepartmentById(departmentId, department);
+		} catch (Exception e) {
+			throw new DepartmentNotFoundException("Failed to update the specific DepartmentID");
+		}
 	}
 	
 	@DeleteMapping(path = "/departments/{id}")
