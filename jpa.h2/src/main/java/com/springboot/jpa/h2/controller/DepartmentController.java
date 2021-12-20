@@ -33,7 +33,7 @@ public class DepartmentController {
 	public ResponseEntity<Department> postDepartment(@Valid @RequestBody Department department) {
 			LOGGER.info("Saved the department successfully");
 			Department newDepartment =  departmentService.saveDepartment(department);
-			return ResponseEntity.status(HttpStatus.CREATED).body(department);
+			return ResponseEntity.status(HttpStatus.CREATED).body(newDepartment);
 	}
 	
 	@GetMapping(path = "/departments")
