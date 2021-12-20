@@ -9,7 +9,14 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Department {
 
 	@Id
@@ -30,69 +37,7 @@ public class Department {
 
 	@Column(name = "department_Code")
 	@NotNull(message = "Enter the department")
-	private String departmentCode;
-	
-	Department() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public Department(Long departmentId, String departmentName, String departmentSection, Long departmentNumbers, String departmentCode) {
-		super();
-		this.departmentId = departmentId;
-		this.departmentName = departmentName;
-		this.departmentSection = departmentSection;
-		this.departmentNumbers = departmentNumbers;
-		this.departmentCode = departmentCode;
-	}
-
-	public Long getDepartmentId() {
-		return departmentId;
-	}
-
-	public void setDepartmentId(Long departmentId) {
-		this.departmentId = departmentId;
-	}
-
-	public String getDepartmentName() {
-		return departmentName;
-	}
-
-	public void setDepartmentName(String departmentName) {
-		this.departmentName = departmentName;
-	}
-
-	public String getDepartmentSection() {
-		return departmentSection;
-	}
-
-	public void setDepartmentSection(String departmentSection) {
-		this.departmentSection = departmentSection;
-	}
-
-	public Long getDepartmentNumbers() {
-		return departmentNumbers;
-	}
-
-	public void setDepartmentNumbers(Long departmentNumbers) {
-		this.departmentNumbers = departmentNumbers;
-	}
-
-	
-	public String getDepartmentCode() {
-		return departmentCode;
-	}
-
-	public void setDepartmentCode(String departmentCode) {
-		this.departmentCode = departmentCode;
-	}
-
-	@Override
-	public String toString() {
-		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName
-				+ ", departmentSection=" + departmentSection + ", departmentNumbers=" + departmentNumbers
-				+ ", departmentCode=" + departmentCode + "]";
-	}
-		
+	private String departmentCode;	
 	
 
 }
