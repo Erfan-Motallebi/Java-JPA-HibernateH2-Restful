@@ -3,6 +3,7 @@ package com.springboot.jpa.h2.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,9 @@ class DepartmentServiceTest {
 	}
 
 	@Test
+	@DisplayName(value = "Get a specific department by name")
 	public void getTheDeparment_usingDepartmentName() {
-		String departmentName = "Marketing";
+		String departmentName = "Engineering";
 		Department foundDep = departmentService.findDepartmentByName(departmentName);
 
 		assertEquals(departmentName, foundDep.getDepartmentName());
