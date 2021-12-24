@@ -8,7 +8,7 @@ import com.springboot.jpa.h2.error.DepartmentNotFoundException;
 public interface DepartmentService {
 	Department saveDepartment(Department department);
 
-	List<Department> extractAllDepartment();
+	List<Department> extractAllDepartments();
 	
 	Department findDepartmentById(Long departmentId) throws DepartmentNotFoundException;
 

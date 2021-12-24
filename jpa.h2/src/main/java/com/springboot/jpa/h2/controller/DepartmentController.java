@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,7 @@ public class DepartmentController {
 	@Autowired
 	private DepartmentService departmentService;
 	
-	private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(DepartmentController.class);
+	private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 	
 	@PostMapping(path = "/departments")
 	public ResponseEntity<Department> postDepartment(@Valid @RequestBody Department department) {
@@ -38,7 +39,7 @@ public class DepartmentController {
 	
 	@GetMapping(path = "/departments")
 	public List<Department> getDepartments() {
-		return departmentService.extractAllDepartment();
+		return departmentService.extractAllDepartments();
 	}
 	
 	@PostMapping(path = "/departments/{id}")
